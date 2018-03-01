@@ -1,0 +1,5 @@
+# Three Observations Trends
+
+# 1. Urban cities have a higher percentage of total drivers than Rural and Suburban cities
+# 2. Urban cities have lower fare averages than Rural and Suburban cities
+# 3. The average fare ($) decreases as the total number of rides (per city) increases
