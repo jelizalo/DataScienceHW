@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 # Three Observable trends based on data:
     # 1. Charter Schools tend to have higher Math and Reading averages, and have higher passing rates (in math, reading, and overall).
     # 2. Lower student average budgets tend to have higher Math and Reading averages, and have higher passing rates (in math, reading, and overall).
+=======
+# Three Observable trends based on data:
+    # 1. Charter Schools tend to have higher Math and Reading averages, and have higher passing rates (in math, reading, and overall).
+    # 2. Lower student average budgets tend to have higher Math and Reading averages, and have higher passing rates (in math, reading, and overall).
+>>>>>>> 0b745fabb9f70ce1819a4dc880c700e31fea41f2
     # 3. Smaller school sizes tend to have higher Math and Reading averages, and have higher passing rates (in math, reading, and overall) compared to larger school sizes.

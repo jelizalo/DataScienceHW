@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Sub testing():
 ' Defining Variables
 Dim ticker As String
@@ -32,4 +33,40 @@ End If
 
 Next i
 
+=======
+Sub testing():
+' Defining Variables
+Dim ticker As String
+Dim vol_total As Double
+vol_total = 0
+
+' Creating Titles for new variables
+Range("I1").Value = "Ticker"
+Range("J1").Value = "Total Stock Volume"
+
+Dim summary_ticker_row As Integer
+summary_ticker_row = 2
+
+' Set range
+For i = 2 To Rows.Count
+
+' Adding the <vol> values until <ticker> changes
+If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+ticker = Cells(i, 1).Value
+vol_total = vol_total + Cells(i, 7).Value
+Range("I" & summary_ticker_row).Value = ticker
+Range("J" & summary_ticker_row).Value = vol_total
+summary_ticker_row = summary_ticker_row + 1
+vol_total = 0
+
+Else
+
+' When <ticker>, add values of <vol> and move on to next <ticker>
+vol_total = vol_total + Cells(i, 7).Value
+
+End If
+
+Next i
+
+>>>>>>> 0b745fabb9f70ce1819a4dc880c700e31fea41f2
 End Sub
