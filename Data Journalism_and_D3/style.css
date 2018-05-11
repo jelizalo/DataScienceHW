@@ -7,7 +7,7 @@
     font: 12px sans-serif;
     color: black;
     text-align: center;
-    background: #3bb0b4;
+    background: #74dadd;
     border: 0;
     border-radius: 10px;
   }
@@ -16,6 +16,7 @@
     font-family: sans-serif;
     font-weight: bold;
     fill: #3bb0b4;
+    padding:5px;
     text-anchor: middle;
   }
   

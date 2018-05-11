@@ -7,7 +7,7 @@ var margin = {
   top: 60,
   right: 60,
   bottom: 60,
-  left: 60
+  left: 60 
 };
 
 // Define dimensions of the chart area
@@ -37,12 +37,12 @@ d3.csv("data/data.csv", function(error, gradData) {
 
 // Create scale functions
 var yLinearScale = d3.scaleLinear()
-  .domain([0, d3.max(gradData, d => d.bachDeg)])
+  .domain([0, d3.max(gradData, d => d.bachDeg+5)])
   .range([height, 0]);
 
 var xLinearScale = d3.scaleLinear()
-  .domain([0, d3.max(gradData, d => d.excellentHealth)])
-  .range([0, width]);
+  .domain([12, d3.max(gradData, d => d.excellentHealth+2)])
+  .range([12, width]);
 
 // Create axis functions
 var bottomAxis = d3.axisBottom(xLinearScale);
@@ -55,20 +55,24 @@ var circles = chartGroup.selectAll("circle")
 .append("circle")
 .attr("cx", (d, i) => xLinearScale(d.excellentHealth))
 .attr("cy", d => yLinearScale(d.bachDeg))
-.attr("r", "10")
+.attr("r", "12")
 .attr("fill", "skyblue")
-.attr("opacity","0.5")
+.attr("opacity","0.9")
 
-// // append labels to circles
-// chartGroup.selectAll("text") 
-//   .data(gradData)
-//   .enter()
-//   .attr("x", (d, i) => xLinearScale(d.excellentHealth))
-//   .attr("y", d => yLinearScale(d.bachDeg))
-//   .append("text")
-//   .text(function(d) {
-//     return d.stateAbb;
-//   });
+// append labels to circles
+chartGroup.selectAll("text") 
+  .data(gradData)
+  .enter()
+  .append("text")
+    .style("text-anchor", "middle")
+    .attr("font_family", "sans-serif")  // Font type
+    .attr("font-size", "11px")  // Font size
+    .attr("fill", "white")  // Font color
+  .attr("x", (d, i) => xLinearScale(d.excellentHealth))
+  .attr("y", d => yLinearScale(d.bachDeg))
+  .text(function(d) {
+    return d.stateAbb;
+  });
 
 // Append Axes to the chart
 chartGroup.append("g")
@@ -85,10 +89,6 @@ var toolTip = d3.tip()
   .html(d =>
     `${d.State}<br>Bachelor Degree: ${d.bachDeg}<br>Reported Excellent Health: ${d.excellentHealth}`
   );
-
-// Create tooltip in the chart
-chartGroup.call(toolTip);
-
 // Create event listeners to display and hide the tooltip
 circles.on("mouseover", function (data) {
    toolTip.show(data);
@@ -97,6 +97,9 @@ circles.on("mouseover", function (data) {
   .on("mouseout", function (data, index) {
     toolTip.hide(data);
   });
+
+  // Create tooltip in the chart
+chartGroup.call(toolTip);
 
   // Create axes labels
   // Y axis
@@ -108,11 +111,12 @@ circles.on("mouseover", function (data) {
     .text("Graduated with Bachelor Degree (%)");
   // X axis
   chartGroup.append("text")
-    .attr("transform", `translate(${width/2}, ${height + margin.top + 30})`)
+    .attr(
+      "transform",
+      "translate(" + width / 2 + " ," + (height + margin.top + 30) + ")")
     .attr("class", "axisText")
     .text("Reported Excellent Health (%)");
 });
 
 // need to have x axis label to render
 // need to get tooltip to stop strobbing
-// need to get circles to have labels
