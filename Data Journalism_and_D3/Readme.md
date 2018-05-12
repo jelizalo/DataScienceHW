@@ -14,13 +14,9 @@ The beat reporters will go out and investigate the relationship you find, sourci
 
 ### Level 1: D3 Dabbler
 
-![4-scatter](Images/4-scatter.jpg)
-
 You need to find a correlation between two data variables, each measured state by state and taken from different data sources. You'll then visualize the correlation with a scatter plot and embed the graphic into an .html file. You need to accomplish these four steps.
 
 #### 1. Find the Data
-
-![2-census](Images/2-census.jpg)
 
 Look for demographic information using the 2014 one-year estimates from the U.S. Census Bureau's American Community Survey. You can specify your information using the [American FactFinder](http://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml) tool. When searching through the data, be sure to select these options in the left sidebar:
 
