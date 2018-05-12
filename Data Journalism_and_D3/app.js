@@ -4,7 +4,7 @@ var svgHeight = 500;
 
 // Define the chart's margins as an object
 var margin = {
-  top: 60,
+  top: 50,
   right: 60,
   bottom: 60,
   left: 60 
@@ -66,7 +66,7 @@ chartGroup.selectAll("text")
   .append("text")
     .style("text-anchor", "middle")
     .attr("font_family", "sans-serif")  // Font type
-    .attr("font-size", "11px")  // Font size
+    .attr("font-size", "10px")  // Font size
     .attr("fill", "white")  // Font color
   .attr("x", (d, i) => xLinearScale(d.excellentHealth))
   .attr("y", d => yLinearScale(d.bachDeg))
@@ -85,17 +85,18 @@ chartGroup.append("g")
 // Initialize tool tip
 var toolTip = d3.tip()
   .attr("class", "tooltip")
-  .offset([80, -60])
+  // .offset([80, -60])
+  .offset([0,0])
   .html(d =>
     `${d.State}<br>Bachelor Degree: ${d.bachDeg}<br>Reported Excellent Health: ${d.excellentHealth}`
-  );
+);
 // Create event listeners to display and hide the tooltip
 circles.on("mouseover", function (data) {
    toolTip.show(data);
   })
   // onmouseout event
-  .on("mouseout", function (data, index) {
-    toolTip.hide(data);
+.on("mouseout", function (data, index) {
+  toolTip.hide(data);
   });
 
   // Create tooltip in the chart
@@ -105,7 +106,7 @@ chartGroup.call(toolTip);
   // Y axis
   chartGroup.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left + 40)
+    .attr("y", 0 - margin.left + 30)
     .attr("x", 0 - (height / 2))
     .attr("class", "axisText")
     .text("Graduated with Bachelor Degree (%)");
@@ -113,7 +114,7 @@ chartGroup.call(toolTip);
   chartGroup.append("text")
     .attr(
       "transform",
-      "translate(" + width / 2 + " ," + (height + margin.top + 30) + ")")
+      "translate(" + width / 2 + " ," + (height + margin.top - 15) + ")")
     .attr("class", "axisText")
     .text("Reported Excellent Health (%)");
 });
